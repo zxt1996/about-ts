@@ -30,3 +30,33 @@ enum StatusTwo {
     SPA,
     DABAOJIAN,
   }
+
+// 有静态方法的枚举
+// 使用 enum + namespace 的声明的方式向枚举类型添加静态方法
+enum Weekday {
+    Monday,
+    Tuesday,
+    Wednesday,
+    Thursday,
+    Friday,
+    Saturday,
+    Sunday
+  }
+
+namespace Weekday {
+    export function isBusinessDay(day: Weekday) {
+        switch (day) {
+            case Weekday.Saturday:
+            case Weekday.Sunday:
+                return false;
+            default:
+                return true;
+        }
+    }
+}
+
+const mon = Weekday.Monday;
+const sun = Weekday.Sunday;
+
+console.log(Weekday.isBusinessDay(mon)); // true
+console.log(Weekday.isBusinessDay(sun));

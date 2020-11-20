@@ -51,3 +51,27 @@ function addObj(first: object | NumberObj, second: object | NumberObj) {
 
     return 0;
 }
+
+
+// 交叉类型
+function extend<T extends object, U extends object>(first: T, second: U): T & U {
+    // 从两个对象中创建一个新对象，新对象拥有着两个对象所有的功能
+    const result = <T & U>{};
+    for (let id in first) {
+        (<T>result)[id] = first[id];
+    }
+
+    for (let id in second) {
+        if (!result.hasOwnProperty(id)) {
+            (<U>result)[id] = second[id];
+        }
+    }
+
+    return result;
+}
+
+const x = extend({ a: 'hello' }, { b: 42 });
+console.log(x);
+// 现在 x 拥有了 a 属性与 b 属性
+const a = x.a;
+const b = x.b;

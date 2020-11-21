@@ -37,6 +37,10 @@ function foo(bar: number, other: string = 'hello', bas?: string): void {
 foo(123);
 foo(123, 'one', 'two');
 
+// 箭头函数
+const simple: (foo: number) => string = foo => foo.toString();
+simple(1);
+
 
 interface IUser {
     name: string,

@@ -40,6 +40,8 @@ foo(123, 'one', 'two');
 // 箭头函数
 const simple: (foo: number) => string = foo => foo.toString();
 simple(1);
+type Adder = (a: number, b: number) => number;
+let fooAdd: Adder = (a, b) => a + b;
 
 
 interface IUser {

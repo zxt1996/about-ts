@@ -11,7 +11,7 @@ interface Teacher {
     skill: () => {};
 }
 
-function judgeWho(animal: Waiter | Teacher) {
+function judgeWho(animal: Waiter | Teacher): animal is Waiter {
     // animal.say();  报错，因为judgeWho不能准确的判断联合类型具体的实例是什么
     
     // 类型保护-类型断言
@@ -28,6 +28,8 @@ function judgeWho(animal: Waiter | Teacher) {
     } else {
         animal.say();
     }
+
+    return (animal as any).say !== undefined;
 }
 
 // 类型保护-typeof

@@ -4,6 +4,7 @@ import ShoppingBasket from './components/about-class';
 import AboutHook from './components/about-hooks';
 import { AppContextInterface, AppCtx } from './components/about-context';
 import { useCurrentUserName, CurrentUserProvider } from './utils/createCtx';
+import { List } from './components/about-generic';
 
 const sampleAppContext: AppContextInterface = {
   name: "Using React Context in a Typescript App",
@@ -31,6 +32,22 @@ function App() {
         <CurrentUserProvider value="Anders">
           <EnthusasticGreeting />
         </CurrentUserProvider>
+
+        <div>
+          <List
+            items={["a", "b"]}  // type of 'string' inferred
+            renderItem={(item) => (
+              <li key={item}>
+                {item}
+              </li>
+            )}
+          />
+
+          <List<number> 
+            items={[1, 2]}
+            renderItem={(item) => <li key={item}>{item.toPrecision(3)}</li>}
+          />
+        </div>
       </div>
     </AppCtx.Provider>
   );

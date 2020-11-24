@@ -42,6 +42,8 @@ interface Girl2 {
     // 接口里的方法
     // 返回值是string类型
     say(): string;
+    // 只读
+    readonly about: string;
 }
 
 // 接口和类的约束
@@ -51,10 +53,25 @@ class XiaoGirl implements Girl2 {
   bust = 90;
   say() {
     return "jjj";
-  }
+  };
+  about: "readonly";
 }
 
-// 接口间的继承
+// 接口间的扩展
 interface Teacher extends Girl2 {
   teach(): string;
 }
+
+// 接口可以定义多次，会被自动合并为单个接口
+interface Point {
+  x: number;
+}
+
+interface Point {
+  y: number;
+}
+
+const point: Point = {
+  x: 1,
+  y: 2
+};

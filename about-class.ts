@@ -24,22 +24,31 @@ person.name = "jojo";
 person.sayHello("jj");
 console.log(person.name);
 
-// private的最大用处是封装一个属性，然后通过 Getter 和 Setter 的形式来访问和修改这个属性。
-class XiaoMi {
-    constructor(private _age: number) {}
+// private的最大用处是封装一个属性
+// 然后通过getter和setter方法来实现数据的封装和有效性校验
+let passcode = "hello";
+class Employee {
+    private _fullName: string;
 
-    get age() {
-        return this._age - 10;
+    get fullName(): string {
+        return this._fullName;
     }
 
-    set age(age: number) {
-        this._age = age;
+    set fullName(newName: string) {
+        if (passcode && passcode == "hello") {
+            this._fullName = newName;
+        } else {
+            console.log("error: unauthorized update of employee");
+        }
     }
 }
 
-const xiaoxiao = new XiaoMi(28);
-xiaoxiao.age = 25;
-console.log(xiaoxiao.age);
+let employee = new Employee();
+employee.fullName = "sss";
+if (employee.fullName) {
+    console.log(employee.fullName);
+}
+
 
 // 用static声明的属性和方法，不需要进行声明对象，就可以直接使用
 class GirlThree{
@@ -62,25 +71,23 @@ const personTwo = new PersonTwo("jjjj");
 // personTwo._name = "jjj"; 报错
 
 // 抽象类
-abstract class Girl{
-    abstract skill()  //因为没有具体的方法，所以我们这里不写括号
+// 抽象类不能被实例化，因为他里面包含一个或多个抽象方法
+abstract class PersonWho {
+    constructor(public name: string) {}
 
+    abstract say(word: string): void;
 }
 
-class Waiter extends Girl{
-    skill(){
-        console.log('大爷，请喝水！')
+// 只能实例化实现所有抽象方法的字类
+class Developer extends PersonWho {
+    constructor(name: string) {
+        super(name);
+    }
+
+    say(word: string): void {
+        console.log(`${this.name} say ${word}`);
     }
 }
 
-class BaseTeacher extends Girl{
-    skill(){
-        console.log('大爷，来个泰式按摩吧！')
-    }
-}
-
-class seniorTeacher extends Girl{
-    skill(){
-        console.log('大爷，来个SPA全身按摩吧！')
-    }
-}
+const logo = new Developer("logo");
+logo.say("hei");

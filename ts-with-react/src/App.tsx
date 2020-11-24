@@ -5,6 +5,7 @@ import AboutHook from './components/about-hooks';
 import { AppContextInterface, AppCtx } from './components/about-context';
 import { useCurrentUserName, CurrentUserProvider } from './utils/createCtx';
 import { List } from './components/about-generic';
+import { MemberTableComponent } from './components/memberTable';
 
 const sampleAppContext: AppContextInterface = {
   name: "Using React Context in a Typescript App",
@@ -47,6 +48,10 @@ function App() {
             items={[1, 2]}
             renderItem={(item) => <li key={item}>{item.toPrecision(3)}</li>}
           />
+        </div>
+
+        <div>
+          <MemberTableComponent/>
         </div>
       </div>
     </AppCtx.Provider>

@@ -28,6 +28,11 @@ function joinTwo<T, P>(first: T, second: P) {
 
 joinTwo<number, string>(1, "22");
 
+// 泛型接口
+interface GenericIdentityFn<T> {
+    (arg: T): T
+}
+
 // 类中泛型
 class SelectGirl<T> {
     constructor(private girls: T[]) {}

@@ -4,7 +4,7 @@ import ShoppingBasket from './components/about-components/about-class';
 import AboutHook from './components/about-hooks';
 import { AppContextInterface, AppCtx } from './components/context-use/about-context';
 import { useCurrentUserName, CurrentUserProvider } from './utils/createCtx';
-import { List } from './components/about-generic';
+import { List } from './components/generic/about-generic';
 import { MemberTableComponent } from './components/memberTable';
 
 const sampleAppContext: AppContextInterface = {

@@ -20,7 +20,7 @@ function toArray(x: number): Array<number> {
 type Func = typeof toArray; // -> (x: number) => number[]
 
 
-// keyof用于获取某种类型的所有键，其返回类型是联合类型
+// keyof用于获取某种类型的所有键，其返回类型是联合类型,有点类似JavaScript中的Object.keys()
 type K1 = keyof Person;  //-> "name" | "age"
 
 interface StringArray {

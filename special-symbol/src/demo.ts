@@ -81,3 +81,17 @@ const sayHello = (name: string | undefined) => {
         return 'no';
     }
 }
+
+// 加号和减号
+// -?是去掉类型中属性后面的?，整个Required的实际效果是去掉T类型中所有属性键后面的?，让所有属性变成必填的
+type Requireds<T> = {
+    [P in keyof T]-?: T[P]
+}
+
+type Person = {
+    name: string,
+    age?: number
+}
+
+// 结果：{ name: string; age: number; }
+type result = Requireds<Person>;
